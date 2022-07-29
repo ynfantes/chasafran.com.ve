@@ -1,0 +1,69 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+.navbar .navbar-brand {
+  background: #1e4399;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #1e4399;
+}
+.dropdown-menu {
+  background-color: #1e4399;
+}
+a {
+  color: #1e4399;
+}
+.main-color {
+  color: #1E6DA5;
+}
+.slides-navigation a:hover {
+  background: #1e4399;
+}
+.slides-pagination a.current {
+  background: #1e4399;
+}
+.header-center a:hover {
+  color: #fff;
+}
+.totop:hover span > a.hover {
+  color: #1e4399;
+}
+.left-icon .icon {
+    background-color: #2d9eda;
+    background-image: linear-gradient(to bottom, #1e4399, #2d9eda);
+}
+.styled div span {
+  background: #1e4399;
+}
+footer.footer {
+  background: #1E6DA5;
+  background-image: url("../../img/gradient/bg_off.png");
+  
+}
+.post .post-meta .post-icon:hover {
+  background: #1e4399;
+}
+.post .post-meta span a {
+  color: #1e4399;
+}
+.post .read-more {
+  border: 1px solid #1e4399;
+}
+.mejs-controls .mejs-time-rail .mejs-time-current {
+  background-color: #1e4399;
+}
+.mejs-horizontal-volume-current {
+  background: #1e4399;
+}
+.skill-bar ul li .bar {
+  background: #1e6da5;
+}
+.pagination .pag-prev a,
+.pagination .pag-next a {
+  background: #1e4399;
+  border-color: #1e4399;
+}
+.testimonial-list .testimonial-item a.current ~ .testi-link,
+.testimonial-list .testimonial-item a:hover ~ .testi-link {
+  background: rgba(76, 221, 243, 0.8);
+}
