@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700,900);@import url(http://fonts.googleapis.com/css?family=Raleway:900,300,700);.navbar.navbar-default{border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;border:0;background-color:#25292c;/*background-image:linear-gradient(to bottom, #1C3A93,#2d9eda);*/}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700,900);@import url(https://fonts.googleapis.com/css?family=Raleway:900,300,700);.navbar.navbar-default{border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;border:0;background-color:#25292c;/*background-image:linear-gradient(to bottom, #1C3A93,#2d9eda);*/}
 .navbar .navbar-brand{font-family:'Roboto', sans-serif;padding:18px 25px;padding-right:30px;color:#FCFCFC;text-transform:uppercase;height:auto;background:#4cddf3;outline:0;}
 .navbar .navbar-brand img{margin-right:5px;}
 .navbar .navbar-brand:hover{background:#1d2023;color:#FFF;}

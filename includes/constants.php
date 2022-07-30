@@ -16,6 +16,9 @@ $twig = new Twig_Environment($loader, array(
             "auto_reload" => true)
 );
 
+if (isset($_SESSION))
+    $twig->addGlobal("session", $_SESSION);
+    
 $twig->addExtension(new extensiones());
 $twig->addExtension(new Twig_Extension_Debug());
 

@@ -12,7 +12,6 @@ $accion = isset($_GET['accion']) ? $_GET['accion'] : "listar";
 
 switch ($accion) {
     
-    // <editor-fold defaultstate="collapsed" desc="cancelacion">
     case "cancelacion":
         $titulo = $_GET['id'] . ".pdf";
         $content = 'Content-type: application/pdf';
@@ -21,9 +20,7 @@ switch ($accion) {
         header($content);
         readfile($url,false);
         break;
-    // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="listarRecibosCancelados">
     case "listarRecibosCancelados":
         $propiedad = new propiedades();
         $inmuebles = new inmueble();
@@ -64,9 +61,7 @@ switch ($accion) {
 
 
         break; 
-    // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="ver">
     case "ver":
         $propiedad = new propiedades();
         $inmuebles = new inmueble();
@@ -108,9 +103,8 @@ switch ($accion) {
             "cuentas" => $cuenta));
 
 
-        break; // </editor-fold>
+        break; 
     
-    // <editor-fold defaultstate="collapsed" desc="guardar">
     case "guardar":
         $pago = new pago();
         $data = $_POST;
@@ -131,12 +125,10 @@ switch ($accion) {
         echo json_encode($exito);
         
         break;
-    // </editor-fold>
     
-    // <editor-fold defaultstate="collapsed" desc="registrar">
-        case "registrar":
-        case "listar":
-        default :
+    case "registrar":
+    case "listar":
+    default :
         $propiedad = new propiedades();
         $facturas = new factura();
         $inmuebles = new inmueble();
@@ -202,9 +194,7 @@ switch ($accion) {
         "propiedades"=>$propiedades['data']
         ));
         break; 
-// </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="listaPagoDetalle">
     case "listaPagosDetalle":
         $pagos = new pago();
         $pago_detalle = $pagos->detalleTodosPagosPendientes();
@@ -220,9 +210,7 @@ switch ($accion) {
             }
         }
         break; 
-// </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="listaPagosMaestros">
     case "listaPagosMaestros":
         $pagos = new pago();
         $pagos_maestro = $pagos->listarPagosPendientes();
@@ -249,9 +237,7 @@ switch ($accion) {
             }
         }
         break; 
-// </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="listaPagosPendientes">
     case "listarPagosPendientes":
         $pagos = new pago();
         $pagos_maestro = $pagos->listarPagosPendientes();
@@ -299,7 +285,6 @@ switch ($accion) {
 
         break; // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="confirmación de pago">
     case "confirmar":
 
         $pago = new pago();
@@ -307,17 +292,16 @@ switch ($accion) {
         $estatus = $_GET['estatus'];
         $r = $pago->procesarPago($id, $estatus);
         echo $r;
-        break; // </editor-fold>
+        break; 
    
-    // <editor-fold defaultstate="collapsed" desc="reenviar email registro pago">
+    
     case "reenviarEmailRegistroPago":
         $pago = new pago();
         $id = $_GET['id'];
         $pago->enviarEmailPagoRegistrado($id);
         break; 
-    // </editor-fold>
+    
         
-    // <editor-fold defaultstate="collapsed" desc="lista recibos no publicados">
     case "listaRecibosCanceladosNoPublicados":
         $pagos = new pago();
         $pago = $pagos->listarPagosProcesadosWeb();
@@ -344,9 +328,7 @@ switch ($accion) {
             echo "Total Recibos: " . $n;
         }
         break; 
-    // </editor-fold>
         
-    // <editor-fold defaultstate="collapsed" desc="Enviar Email Registro Pago no enviado">
     case "enviarEmailRegistroPagoNoEnviado":
         $pago = new pago();
         $lista = $pago->listarPagosEmailRegisroNoEnviado();
@@ -360,9 +342,8 @@ switch ($accion) {
         } else {
             echo 'No hay email que reenviar en este momento';
         }
-        break; // </editor-fold>
+        break;
 
-    // <editor-fold defaultstate="collapsed" desc="Pagos procesados general">
     case "listarPagosProcesadosGeneral":
         $pagos = new pago();
         $desde = null;
@@ -420,5 +401,4 @@ switch ($accion) {
             echo "0";
         }
         break; 
-    // </editor-fold>
 }
