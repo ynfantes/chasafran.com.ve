@@ -26,7 +26,6 @@ spl_autoload_register( function($class) {
     include_once SERVER_ROOT.'/includes/'.$class.'.php';
 });
 
-
 if (isset($_GET['logout']) && $_GET['logout'] == true) {
     $user_logout = new propietario();
     $user_logout->logout();
