@@ -5,7 +5,8 @@ Options +FollowSymLinks
 RewriteEngine on
 
 
-RewriteCond %{HTTP_HOST} ^administradorachasafran.com.ve
+# RewriteCond %{HTTP_HOST} ^administradorachasafran.com.ve
+RewriteCond %{HTTPS} on
 RewriteRule (.*) http://www.administradorachasafran.com.ve/$1 [R=301,L]
 
 # RewriteCond %{SERVER_PORT} 80
