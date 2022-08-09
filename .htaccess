@@ -4,6 +4,7 @@ Header add Access-Control-Allow-Origin "*"
 Options +FollowSymLinks
 RewriteEngine on
 
+
 RewriteCond %{HTTP_HOST} ^administradorachasafran.com.ve
 RewriteRule (.*) http://www.administradorachasafran.com.ve/$1 [R=301,L]
 
