@@ -129,29 +129,32 @@ switch ($accion) {
     case "registrar":
     case "listar":
     default :
-        $propiedad = new propiedades();
-        $facturas = new factura();
-        $inmuebles = new inmueble();
-        $resultado = Array();
+        $propiedad  = new propiedades();
+        $facturas   = new factura();
+        $inmuebles  = new inmueble();
+        $resultado  = [];
+        $cuenta     = [];
+
         if ($accion == 'guardar') {
             $resultado = $exito;
         }
         
         $propiedades = $propiedad->propiedadesPropietario($_SESSION['usuario']['cedula']);
 
-        $cuenta = Array();
-        
-        $bitacora->insertar(Array(
-            "id_sesion"=>$session['id_sesion'],
-            "id_accion"=> 8,
-            "descripcion"=>'Inicio del proceso',
-        ));
+        $data = [
+            'id_sesion'     => $session['id_sesion'],
+            'id_accion'     => 8,
+            'descripcion'   => 'Inicio del proceso',
+        ];
+
+        $bitacora->insertar($data);
         
         if ($propiedades['suceed'] == true) {
 
             foreach ($propiedades['data'] as $propiedad) {
 
             $inmueble = $inmuebles->ver($propiedad['id_inmueble']);
+
             $factura = $facturas->estadoDeCuenta($propiedad['id_inmueble'], $propiedad['apto']);
             
                 if ($factura['suceed'] == true) {
@@ -178,21 +181,24 @@ switch ($accion) {
 
                     }
                     
-                    $cuenta[] = Array(
-                            "inmueble"      => $inmueble['data'][0],
-                            "propiedades"   => $propiedad,
-                            "cuentas"       => $factura['data'],
-                            "resultado"     => $resultado
-                            );
+                    $cuenta[] = [
+                        'inmueble'    => $inmueble['data'][0],
+                        'propiedades' => $propiedad,
+                        'cuentas'     => $factura['data'],
+                        'resultado'   => $resultado
+                    ];
                 }
             }
         }
-        echo $twig->render('enlinea/pago/formulario.html.twig', array("session" => $session,
-        "cuentas" => $cuenta,
-        "accion" => $accion,
-        "usuario"=>$session['usuario'],
-        "propiedades"=>$propiedades['data']
-        ));
+
+        $options = [
+            'session'     => $session,
+            'cuentas'     => $cuenta,
+            'accion'      => $accion,
+            'usuario'     =>$session['usuario'],
+            'propiedades' =>$propiedades['data']
+        ];
+        echo $twig->render('enlinea/pago/formulario.html.twig', $options );
         break; 
 
     case "listaPagosDetalle":

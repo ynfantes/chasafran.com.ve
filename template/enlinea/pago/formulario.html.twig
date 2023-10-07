@@ -17,14 +17,12 @@
 {% set recibos = 0 %}
 {% set total = 0 %}
 {% set inm = 0 %}
-{% set mov = "0" %}
 {% for c in cuentas%}
 {% set inm = inm + 1 %}
 {% for f in c.cuentas %}
 {% set saldo = f.facturado - f.abonado %}
 {% set total = total + saldo %}
 {% set recibos = recibos + 1 %}
-{% set mov = mov ~ ", " ~ saldo %}
 {% endfor %}
 {% endfor %}
 {{ format_number(total) }}
@@ -35,9 +33,6 @@
 </li>
 <li class="sparks-info">
 <h5> Mis Inmuebles <span class="txt-color-greenDark"><i class="fa fa-building-o"></i>&nbsp;{{ inm }}</span></h5>
-<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-{{ mov }}
-</div>
 </li>
 </ul>
 <!-- end sparks -->
@@ -95,6 +90,8 @@ no tiene recibos pendiente por cancelar.
 {% else %}
 <!-- verificamos si el propietarios debe pasar al Dpto. de Cobranza -->
 {% set counter = 0 %}
+{% set deuda_usd = 0 %}
+
 {% for cuenta in cuentas %}
 <div class="row">
 <div class="col-xs-12 col-sm-9">
@@ -112,9 +109,9 @@ no tiene recibos pendiente por cancelar.
 <th style="text-align: center">FACTURADO</th>
 <th style="text-align: center">ABONADO</th>
 <th style="text-align: center">SALDO {{mondeda}}</th>
-{%if cuenta.inmueble.facturacion_usd%}
+{% if cuenta.inmueble.facturacion_usd %}
 <th style="text-align: center">SALDO $</th>
-{%endif%}
+{% endif %}
 <th style="text-align: center" class="">ESTATUS</th>
 </tr>
 </thead>
@@ -122,7 +119,7 @@ no tiene recibos pendiente por cancelar.
 {#% if recibos > constant('MESES_COBRANZA') %#}
     <!--tr><td colspan="7">
 <div class="alert alert-warning fade in">
-    <h4 class="alert-heading">Estimado propietario(a) {{ session.usuario.nombre }}</h4>
+    <h4 class="alert-heading">Estimado propietario(a) {#{ session.usuario.nombre }#}</h4>
     <h2>Le agradecemos ponerse en contacto a la brevedad posible con nuestro departamento de cobranzas.</h2></div>
         </td></tr-->
 {#% else %#}
@@ -150,10 +147,11 @@ no tiene recibos pendiente por cancelar.
 {{ format_number(factura.facturado - factura.abonado) }}
 </span>
 </td>
-{%if cuenta.inmueble.facturacion_usd%}
+{% if cuenta.inmueble.facturacion_usd %}
+{% set deuda_usd = deuda_usd +  factura.facturado_usd %}
 <td><span class="pull-right">{{format_number(factura.facturado_usd)}}</span>
 </td>
-{%endif%}
+{% endif %}
 <td>
 {% if factura.pagado == 0 %} 
 <span class="label label-sm label-success">Pendiente</span> 
@@ -178,9 +176,9 @@ no tiene recibos pendiente por cancelar.
 <td></td>
 <td></td>
 <td><span class="pull-right">{{ format_number(cuenta.propiedades.deuda_total) }}<span class="pull-right"></td>
-{%if cuenta.inmueble.facturacion_usd%}
-<td><span class="pull-right">{{format_number(deuda_usd)}}<span class="pull-right"></td>
-{%endif%}
+{% if cuenta.inmueble.facturacion_usd %}
+<td><span class="pull-right">{{ format_number(deuda_usd)}}<span class="pull-right"></td>
+{% endif %}
 <td></td>
 </tr>
 {#% endif %#}

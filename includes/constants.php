@@ -4,24 +4,29 @@ define("sendMail",1);
 define("SMTP",2);
 include_once 'configuracion.php';
 
-include_once dirname(dirname(dirname(__FILE__))).'/framework/twig/lib/Twig/Autoloader.php';
-include_once SERVER_ROOT . 'includes/extensiones.php';
-Twig_Autoloader::register();
+// init tiwg
+require_once SERVER_ROOT.'/vendor/autoload.php';
+include_once SERVER_ROOT.'includes/extensiones.php';
 
-$loader = new Twig_Loader_Filesystem(SERVER_ROOT . 'template');
-$twig = new Twig_Environment($loader, array(
-            'debug' => true,
-            //'cache' => SERVER_ROOT . 'cache',
-            'cache' => false,
-            "auto_reload" => true)
-);
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Twig\Extension\DebugExtension;
+
+$loader = new FilesystemLoader(SERVER_ROOT.'template');
+
+$options = [
+    'debug'         => true,
+    'cache'         => false,
+    "auto_reload"   => true
+];
+$twig = new Environment($loader, $options);
+$twig->addExtension(new DebugExtension());
+$twig->addExtension(new Extensiones());
+
 
 if (isset($_SESSION))
     $twig->addGlobal("session", $_SESSION);
     
-$twig->addExtension(new extensiones());
-$twig->addExtension(new Twig_Extension_Debug());
-
 spl_autoload_register( function($class) {
     include_once SERVER_ROOT.'/includes/'.$class.'.php';
 });
