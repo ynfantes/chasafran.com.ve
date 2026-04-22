@@ -49,7 +49,7 @@ class propietario extends db implements crud  {
         
             $result = db::select("*",self::tabla,Array("cedula"=>$cedula));
             
-            if ($result['suceed'] == 'true' && count($result['data']) > 0) {
+            if ($result['suceed'] && count($result['data']) > 0) {
             
                 $res = db::select("*","junta_condominio",Array("cedula"=>$cedula));
                 $junta_condominio = '';

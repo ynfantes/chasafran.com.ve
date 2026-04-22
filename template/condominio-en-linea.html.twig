@@ -1,0 +1,110 @@
+{% extends 'layout/base.new.html.twig' %}
+{% block titulo %}Administración de Condominio - Valoriza2{% endblock %}
+{% block description %}Ofrecemos un servicio de administración profesional integral orientado a garantizar la operatividad, el orden financiero y la tranquilidad de los propietarios.{% endblock %}
+{% block seo %}
+    <meta property="og:title" content="Administración de Condominio - Valoriza2" />
+    <meta property="og:description" content="Ofrecemos un servicio de administración profesional integral orientado a garantizar la operatividad, el orden financiero y la tranquilidad de los propietarios." />
+    <meta property="og:image" content="{{constant('ROOT')}}images/administracion-condominio.webap" />
+    <meta property="og:url" content="{{constant('ROOT')}}administracion-condominio.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Administración de Condominio - Valoriza2">
+    <meta name="twitter:description" content="Ofrecemos un servicio de administración profesional integral orientado a garantizar la operatividad, el orden financiero y la tranquilidad de los propietarios.">
+    <meta name="twitter:image" content="{{constant('ROOT')}}images/administracion-condominio.webap">
+{% endblock %}
+
+{% block contenido %}
+<section class="password-protected-page-wrap">
+    <div class="container-default width-100 mg-bottom-0 w-password-page w-form">
+        <form action="{{constant('ROOT')}}login.php" method="post" id="login-form" name="email-form" data-name="Login Form"
+            class="card password-protected-content w-password-page" aria-label="Login Form">
+            <div data-w-id="2078a685-0c58-ebe5-b8d7-ebd2a748e8ad"
+                style="transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 1; transform-style: preserve-3d;">
+                <div class="mg-bottom-20px">
+                    <img src="{{constant('ROOT')}}images/password-icon.svg" alt="Password Icon - Journal X Webflow Template" class="circle-icon size-48px">
+                </div>
+                <h1 class="display-2 mg-bottom-8px">Condominio en Línea</h1>
+                <p class="paragraph-small mg-bottom-32px">Acceso área privada propietarios</p>
+                <div class="w-layout-grid grid-1-column gap-row-24px">
+                    <div class="position-relative">
+                        <input class="input icon-inside w-password-page w-input" 
+                               autofocus="true" 
+                               maxlength="8"
+                               name="usercode" 
+                               data-name="field" 
+                               placeholder="Ingrese su código de usuario" 
+                               type="text" 
+                               id="usercode" 
+                               value="{{ usercode }}"/>
+                        <div class="floating-item item">
+                            <img src="{{constant('ROOT')}}images/user-icon.svg" 
+                                 loading="eager" 
+                                 alt="Padlock Icon"
+                                 style="opacity: .30;" />
+                        </div>
+                    </div>
+                    <div class="position-relative">
+                        <input class="input icon-inside w-password-page w-input" 
+                               autofocus="true"
+                               maxlength="7"
+                               name="password" 
+                               data-name="field" 
+                               placeholder="Ingrese su contraseña" 
+                               type="password" 
+                               id="password" 
+                               value="{{ password }}"/>
+                        <div class="floating-item item">
+                            <img src="{{constant('ROOT')}}images/padlock-icon.svg" loading="eager" alt="Padlock Icon">
+                        </div>
+                    </div>
+                    <input type="submit" data-wait="Please wait..." class="btn-primary w-password-page w-button" value="Entrar ahora">
+                </div>
+            </div>
+            <div class="error-message w-password-page w-form-fail" style="display: {{ error is defined and error ? 'block' : 'none' }};">
+                <div>{{ error }}</div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+parent();
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{constant('ROOT')}}js/jquery-1.10.2.min.js"></script>
+<!-- JQUERY VALIDATE -->
+<script type="text/javascript" src="{{constant('ROOT')}}js/jquery-validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="{{constant('ROOT')}}js/jquery-validate/jquery.form.js"></script>
+<script type="text/javascript">
+$("#login-form").validate({
+    rules : {
+        usercode : { 
+            required : true,
+            digits : true,
+            minlength : 4,
+            maxlength : 8
+        },
+        password : {
+            required : true,
+            minlength : 4,
+            maxlength : 7
+        },
+    },
+    messages : {
+        usercode : { 
+            required : 'Ingrese código de usuario',
+            digits : 'Solo se permiten números',
+            minlength : 'Deben ser mínimo 4 caracteres',
+            maxlength : 'No pueden ser más de 8 caracteres'
+        },
+        password : {
+            required : 'Ingrese su contraseña',
+            minlength: 'Deben ser mínimo 4 caracteres',
+        maxlength:  'No pueden ser más de 7 caracteres'
+        }
+    },
+    errorPlacement : function(error, element) {
+        error.insertAfter(element.parent());
+    }
+});
+</script>
+{% endblock %}

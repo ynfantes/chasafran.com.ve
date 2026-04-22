@@ -453,7 +453,7 @@ Class Misc {
     public static function error_handler($num, $err, $file, $line) {
         $headers = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $headers .= 'From: Administradora Chasafran Daemon <info@administradorachasafran.com.ve>' . "\r\n";
+        $headers .= 'From: Grupo Soluciones SS C.A. Daemon <info@gruposolucionesss.com.ve>' . "\r\n";
         $html = "";
 
         // <editor-fold defaultstate="collapsed" desc="tipos de errores">

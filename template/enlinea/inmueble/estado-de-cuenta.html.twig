@@ -1,7 +1,7 @@
 <div class="row">
 	<!-- col -->
 	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-		<h1 class="page-title txt-color-blue">
+		<h1 class="page-title txt-color-green">
 			<!-- PAGE HEADER -->
 			<i class="fa-fw fa fa-list-alt"></i> 
 				Estado de Cuenta 
@@ -19,7 +19,7 @@
 		<ul id="sparks">
                  <li class="sparks-info">
                     <h5> Prom. Facturacion <span class="txt-color-{% if direccion_facturacion == "up" %}blue{% else %}red{% endif %}"><i class="fa fa-arrow-circle-{{ direccion_facturacion }}" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;{{ promedio_facturacion }}</span></h5>
-                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                    <div class="sparkline txt-color-green hidden-mobile hidden-md hidden-sm">
                             {{ movimiento_facturacion }}
                     </div>
                     </li>

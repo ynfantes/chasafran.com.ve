@@ -8,22 +8,30 @@ include_once 'includes/constants.php';
 $propietario = new propietario();
 
 $result = array();
-$cedula = '';
+$usercode = '';
 $password = '';
 
-if (isset($_POST['cedula']) && isset($_POST['password'])) {
+if (isset($_POST['usercode']) && isset($_POST['password'])) {
     
-    $cedula = $_POST['cedula'];
+    $usercode = $_POST['usercode'];
     $password = $_POST['password'];
-    $result = $propietario->login($cedula, $password, 0);
+    $result = $propietario->login($usercode, $password, 0);
     
     if ($result['suceed']) {
-        
         if ($_SESSION['status'] == 'logueado') {
-            header("location:" . URL_SISTEMA );
+            header("location:".URL_SISTEMA );
+            die();
         }
     }
-    echo $twig->render('login.html.twig', array("mensaje" => $result,"cedula"=>$cedula,"password"=>$password));
+
+    $options = ["error"    => isset($result["error"]) ? $result["error"] : '',
+                "usercode" => $usercode,
+                "password" => $password,
+                "logo"     => 'logo-web'
+                ];
+    echo $twig->render('condominio-en-linea.html.twig', $options);
+    //header("location:".ROOT."condominio-en-linea.html?e=1");
+
 } else {
     if (isset($_POST['email'])) {
         $result = $propietario->recuperarContraSena($_POST['email']);

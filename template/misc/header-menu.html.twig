@@ -1,0 +1,51 @@
+<div class="header-left-side justify-center-tablet">
+    <a href="/" class="header-logo-link left center-mbl w-nav-brand" aria-label="home">
+        <img 
+            src="{{constant('ROOT')}}/images/{{ logo }}.png"
+            alt="Logo Grupo Soluciones SS C.A." class="header-logo" 
+        />
+    </a>
+    <nav role="navigation" class="header-nav-menu-wrapper w-nav-menu">
+        <ul role="list" class="header-nav-menu-list">
+            <li class="header-nav-list-item left">
+                <a href="/"
+                    aria-current="page"
+                    class="header-nav-link {{ className }} w-nav-link"
+                    style="max-width: 1268px;">Inicio</a>
+            </li>
+            <li class="header-nav-list-item left">
+                <a href="{{constant('ROOT')}}sobre-nosotros.html"
+                    class="header-nav-link {{ className }} w-nav-link"
+                    style="max-width: 1268px;">Sobre Nosotros</a>
+            </li>
+            <li class="header-nav-list-item left">
+                <a href="{{constant('ROOT')}}#servicios"
+                    class="header-nav-link {{ className }} w-nav-link"
+                    style="max-width: 1268px;">Servicios</a>
+            </li>
+            <li class="header-nav-list-item left">
+                <a href="{{constant('ROOT')}}#contact"
+                    class="header-nav-link {{ className }} w-nav-link"
+                    style="max-width: 1268px;">Contacto</a>
+            </li>
+            <li class="header-nav-list-item left show-in-tablet last">
+                <a href="{{constant('ROOT')}}condominio-en-linea.html" 
+                   class="nav-link special tablet">Condominio en línea</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="header-right-side">
+    <a href="{{constant('ROOT')}}condominio-en-linea.html"  
+        class="btn-primary small header-white-btn-hidde-on-mb w-button">Condominio en línea
+    </a>
+    <div class="hamburger-menu-wrapper w-nav-button" style="-webkit-user-select: text;"
+        aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0"
+        aria-haspopup="menu" aria-expanded="false">
+        <div class="btn-menu-wrapper">
+            <div class="hamburger-menu-bar top"></div>
+            <div class="hamburger-menu-bar medium"></div>
+            <div class="hamburger-menu-bar bottom"></div>
+        </div>
+    </div>
+</div>

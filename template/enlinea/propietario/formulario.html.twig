@@ -1,7 +1,7 @@
 <div class="row">
 	<!-- col -->
 	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-		<h1 class="page-title txt-color-blue"><i class="fa-fw fa {% if id != 'clave' %} fa-users {% else %} fa-key {% endif %}"></i> Propietario <span>>
+		<h1 class="page-title txt-color-green"><i class="fa-fw fa {% if id != 'clave' %} fa-users {% else %} fa-key {% endif %}"></i> Propietario <span>>
 			{% if id != 'clave' %}Datos Personales {% else %} Clave de Acceso {% endif %} </span></h1>
 	</div>
 	<!-- end col -->
@@ -68,7 +68,7 @@ data-widget-sortable="false"
     <form class="form-horizontal" name="perfil">
 
             <fieldset>
-                <legend class="txt-color-blue"><strong>General</strong></legend>
+                <legend class="txt-color-green"><strong>General</strong></legend>
                     <input type="hidden" name="id" value="{{ propietario.id }}"/>
                     <input type="hidden" name="modificado" value="1"/>
                     <div class="form-group">
@@ -95,7 +95,7 @@ data-widget-sortable="false"
             </fieldset>
 
             <fieldset>
-                <legend class="txt-color-blue"><strong>Contacto</strong></legend>
+                <legend class="txt-color-green"><strong>Contacto</strong></legend>
                     <div class="form-group">
                     <label class="col-md-2 control-label" for="telefono1">Teléfono Habitación</label>
                     <div class="col-md-4"><div class="input-group">
@@ -176,7 +176,7 @@ data-widget-sortable="false"
     <form class="smart-form" name="clave" novalidate="novalidate">
 
             <fieldset>
-                <legend class="txt-color-blue"><strong>Clave de Acceso</strong></legend>
+                <legend class="txt-color-green"><strong>Clave de Acceso</strong></legend>
                     <input type="hidden" name="id" value="{{ propietario.id }}"/>
                     <input type="hidden" name="modificado" value="1"/>
                     <div class="row">

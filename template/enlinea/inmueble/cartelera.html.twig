@@ -1,13 +1,13 @@
 <div class="row">
 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-    <h1 class="page-title txt-color-blue"><i class="fa fa-dashboard fa-fw "></i> Cartelera</h1>
+    <h1 class="page-title txt-color-green"><i class="fa fa-dashboard fa-fw "></i> Cartelera</h1>
 </div>
 <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
     <ul id="sparks" class="">
     
             <li class="sparks-info">
                     <h5> Prom. Facturacion <span class="txt-color-{% if direccion_facturacion == "up" %}blue{% else %}red{% endif %}"><i class="fa fa-arrow-circle-{{ direccion_facturacion }}" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;{{ promedio_facturacion }}</span></h5>
-                    <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+                    <div class="sparkline txt-color-green hidden-mobile hidden-md hidden-sm">
                             {{ movimiento_facturacion }}
                     </div>
             </li>
